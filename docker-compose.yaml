@@ -1,9 +1,0 @@
-version: '3'
-services:
-  alp:
-    image: alpine:latest
-    command: "sh"
-
-
-
-
