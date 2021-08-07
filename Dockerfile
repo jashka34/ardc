@@ -4,7 +4,7 @@ ARG ROOT_PASSWORD
 ARG RUSTUSER_PASSWORD
 
 RUN apk update
-RUN apk add vim mc git
+RUN apk add vim mc git tmux
 RUN apk --update add --no-cache openssh
 
 RUN apk add rust      \
