@@ -42,7 +42,7 @@ USER root
 
 ADD entry.sh /usr/local/bin
 
-EXPOSE 22
+EXPOSE 22 8080
 
 ENTRYPOINT ["entry.sh"]
 CMD ["/usr/sbin/sshd","-D"]
