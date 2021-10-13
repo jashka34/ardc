@@ -1,0 +1,13 @@
+FROM nvim_sshd:latest
+
+RUN apk add rustup
+RUN rustup-init -y
+ENV PATH "/root/.cargo/bin:$PATH"
+
+RUN ls -lah $HOME/.cargo/env
+RUN source $HOME/.cargo/env
+RUN cargo --version
+
+
+
+
