@@ -2,4 +2,6 @@
 ./b2.sh
 ./b3.sh
 ./b4.sh
-./b.sh
+./b9.sh
+./r.sh
+

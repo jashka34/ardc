@@ -1,3 +1,1 @@
-docker build -t nvim_rustup -f ./Dockerfile_rustup .
-
-
+docker build -t nvim_rust_analizer -f ./Dockerfile_rust_analizer .

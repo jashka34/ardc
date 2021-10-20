@@ -1,10 +1,21 @@
-FROM alpine:latest
+FROM rust:alpine
+
+ADD .profile /root
+
+RUN cargo --version
+RUN rustup --version
+RUN rustc --version
+
+#RUN rustup default stable
 
 RUN apk update
-RUN apk add mc git tmux
+RUN apk add mc git tmux curl
 RUN apk add build-base cmake automake autoconf libtool pkgconf coreutils curl unzip gettext-tiny-dev
 
 WORKDIR /root
 RUN git clone https://github.com/neovim/neovim
+
+
+
 
 

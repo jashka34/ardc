@@ -1,4 +1,4 @@
-FROM nvim_neovim:latest
+FROM nvim_common:latest
 
 ARG ROOT_PASSWORD
 ARG RUSTUSER_PASSWORD
@@ -15,6 +15,12 @@ RUN /usr/bin/ssh-keygen -A                                      \
  && ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key         \
  && adduser rustuser --disabled-password                        \
  && echo "rustuser:${RUSTUSER_PASSWORD}" | chpasswd
+
+ADD .profile /home/rustuser
+ADD init.vim /home/rustuser/.config/nvim/
+
+RUN chown rustuser:rustuser /home/rustuser/.profile
+RUN chown rustuser:rustuser -R /home/rustuser/.config
 
 
 

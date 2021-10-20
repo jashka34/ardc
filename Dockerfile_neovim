@@ -1,18 +1,11 @@
-FROM nvim_common:latest
+FROM nvim_sshd:latest
 
-RUN pwd && ls -lah
 WORKDIR /root/neovim
-RUN pwd && ls -lah
+#RUN pwd && ls -lah
 RUN git checkout v0.5.1
 #RUN pwd && ls -lah
 RUN make CMAKE_BUILD_TYPE=Release
 RUN make install
-
-ENV PATH="$HOME/neovim/bin:$PATH"
-
-#RUN ls -lah
-#RUN apk add neovim
-#RUN nvim --version
 
 
 
