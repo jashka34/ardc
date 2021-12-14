@@ -1,14 +1,17 @@
-FROM nvim_neovim:latest
+FROM nvim_rust_analizer:latest
 
 ADD entry.sh /usr/local/bin
+ADD create_file_env.sh /etc/profile.d
 
-RUN echo "path 99999_11111: "$PATH
+RUN ls -lah /etc/profile.d
 
+RUN chmod +x /etc/profile.d/create_file_env.sh
+RUN /etc/profile.d/create_file_env.sh
 
 EXPOSE 22
 
 ENTRYPOINT ["entry.sh"]
-CMD ["/usr/sbin/sshd","-D"]
+#CMD ["/usr/sbin/sshd","-D"]
 
 
 

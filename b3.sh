@@ -1,3 +1,1 @@
-docker build -t nvim_neovim -f ./Dockerfile_neovim .
-
-
+docker build -t nvim_rust_analizer -f ./Dockerfile_rust_analizer .

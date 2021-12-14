@@ -1,21 +1,21 @@
-FROM nvim_neovim:latest
+FROM nvim_sshd:latest
 
-RUN pwd
-RUN ls -lah /usr/local/rustup
+#RUN pwd
+#RUN ls -lah /usr/local/rustup
 
-USER rustuser
+#USER rustuser
 
-WORKDIR /home/rustuser
+#WORKDIR /home/rustuser
 
-RUN ls -lah
-RUN echo "path 1: "$PATH 
+#RUN ls -lah
+#RUN echo "path 1: "$PATH 
 
-RUN rustup install stable
-RUN rustup default stable
+#RUN rustup install stable
+#RUN rustup default stable
 
 #RUN cat .rustup/settings.toml
 
-RUN ls -lah
+#RUN ls -lah
 
-USER root
-RUN ls -lah /usr/local/rustup
+#USER root
+#RUN ls -lah /usr/local/rustup
