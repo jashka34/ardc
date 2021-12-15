@@ -5,7 +5,7 @@ ADD .profile /root
 RUN apk update
 RUN apk add mc git tmux curl
 RUN apk add build-base cmake automake autoconf libtool pkgconf coreutils curl unzip gettext-tiny-dev
-RUN apk add neovim
+RUN apk add neovim vim
 RUN apk add rustup
 RUN apk add mc
 
@@ -16,16 +16,11 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 
 RUN rustup-init -y --no-modify-path --profile minimal --default-toolchain $RUST_VERSION
 RUN chmod -R a+w $RUSTUP_HOME $CARGO_HOME
-RUN source $CARGO_HOME/env
+#RUN source $CARGO_HOME/env
 
-RUN rustup --version \
-    cargo --version \
-    rustc --version 
 
-RUN echo "ruh: "$RUSTUP_HOME
-RUN echo "crh: "$CARGO_HOME
-RUN echo "pth: "$PATH
-RUN echo "rv:  "$RUST_VERSION
+
+
 
 
 

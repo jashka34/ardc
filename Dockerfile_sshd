@@ -16,11 +16,26 @@ RUN /usr/bin/ssh-keygen -A                                      \
  && adduser rustuser --disabled-password                        \
  && echo "rustuser:${RUSTUSER_PASSWORD}" | chpasswd
 
-ADD .profile /home/rustuser
-ADD init.vim /home/rustuser/.config/nvim/
+COPY .profile /home/rustuser   
+COPY .vimrc   /home/rustuser
+COPY init.vim /home/rustuser/.config/nvim/
 
 RUN chown rustuser:rustuser /home/rustuser/.profile
 RUN chown rustuser:rustuser -R /home/rustuser/.config
 
+RUN cd /home/rustuser                 \
+ && chown rustuser:rustuser .profile  \
+ && chown rustuser:rustuser .vimrc
 
 
+USER rustuser
+
+RUN sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+#RUN nvim +PlugInstall +qa
+#RUN nvim --help
+
+#RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#RUN vim +PluginInstall +qa
+
+USER root
